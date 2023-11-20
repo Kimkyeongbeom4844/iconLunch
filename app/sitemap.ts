@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-export default function sitemap(): MetadataRout.Sitemap {
+export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: process.env.SITE_URL,
