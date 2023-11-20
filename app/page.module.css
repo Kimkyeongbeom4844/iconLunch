@@ -10,10 +10,10 @@
   user-select: none;
 }
 .opacity_text {
-  animation: 깜빡깜빡 1.5s infinite linear alternate;
+  animation: opacityAnim 1.5s infinite linear alternate;
 }
 
-@keyframes 깜빡깜빡 {
+@keyframes opacityAnim {
   from {
     opacity: 0;
   }
