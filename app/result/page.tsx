@@ -134,8 +134,16 @@ const Page = () => {
     <>
       {typeof error !== "undefined" ? (
         <div
-          className={styles.wrap}
           style={{
+            position: "fixed",
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            zIndex: 9999,
+            backgroundColor: "#fcfcfc",
+            display: "flex",
+            flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
           }}
@@ -162,110 +170,131 @@ const Page = () => {
             새로고침
           </div>
         </div>
-      ) : typeof currentCoords !== "undefined" ? (
+      ) : (
         <div className={styles.wrap}>
-          <header className={styles.header}>
-            <BiChevronLeft
-              color={
-                isPressBackButton === true ? "rgba(0,0,0,.6)" : "rgba(0,0,0,1)"
-              }
-              size={30}
-              onClick={() => router.push("/")}
-              onTouchEnd={() => router.push("/")}
-              onTouchStart={() => setIsPressBackButton(true)}
-              onMouseOver={() => setIsPressBackButton(true)}
-              onMouseLeave={() => setIsPressBackButton(false)}
-              style={{
-                position: "absolute",
-                left: 0,
-                cursor: "pointer",
-              }}
-            />
-            <h3>오늘의 메뉴</h3>
-          </header>
-          <Map
-            center={{
-              lat: placeCoords?.latitude ?? currentCoords.latitude,
-              lng: placeCoords?.longitude ?? currentCoords.longitude,
-            }} // 지도의 중심좌표
-            isPanto={true} // 부드럽게 이동
-            style={{
-              width: "100%",
-              height: "300px",
-            }} // 지도의 크기
-            level={1} // 지도확대레벨
-            onCreate={setMap}
-          >
-            {/* 나의위치 marker */}
-            <MapMarker
-              position={{
-                lat: currentCoords.latitude,
-                lng: currentCoords.longitude,
-              }}
-              image={{
-                src: "/gromit.png",
-                size: {
-                  width: 69,
-                  height: 65,
-                }, // 마커이미지의 크기입니다
-                options: {
-                  offset: {
-                    x: 32,
-                    y: 60,
-                  }, // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-                },
-              }} //커스텀 마커 옵션
-            />
-            {typeof placeCoords !== "undefined" ? (
-              <>
-                {/* 맛집 marker */}
+          {typeof currentCoords !== "undefined" ? (
+            <>
+              <header className={styles.header}>
+                <BiChevronLeft
+                  color={
+                    isPressBackButton === true
+                      ? "rgba(0,0,0,.6)"
+                      : "rgba(0,0,0,1)"
+                  }
+                  size={30}
+                  onClick={() => router.push("/")}
+                  onTouchEnd={() => router.push("/")}
+                  onTouchStart={() => setIsPressBackButton(true)}
+                  onMouseOver={() => setIsPressBackButton(true)}
+                  onMouseLeave={() => setIsPressBackButton(false)}
+                  style={{
+                    position: "absolute",
+                    left: 0,
+                    cursor: "pointer",
+                  }}
+                />
+                <h3>오늘의 메뉴</h3>
+              </header>
+              <Map
+                center={{
+                  lat: placeCoords?.latitude ?? currentCoords.latitude,
+                  lng: placeCoords?.longitude ?? currentCoords.longitude,
+                }} // 지도의 중심좌표
+                isPanto={true} // 부드럽게 이동
+                style={{
+                  width: "100%",
+                  height: "300px",
+                }} // 지도의 크기
+                level={1} // 지도확대레벨
+                onCreate={setMap}
+              >
+                {/* 나의위치 marker */}
                 <MapMarker
                   position={{
-                    lat: placeCoords.latitude,
-                    lng: placeCoords.longitude,
+                    lat: currentCoords.latitude,
+                    lng: currentCoords.longitude,
                   }}
+                  image={{
+                    src: "/gromit.png",
+                    size: {
+                      width: 69,
+                      height: 65,
+                    }, // 마커이미지의 크기입니다
+                    options: {
+                      offset: {
+                        x: 32,
+                        y: 60,
+                      }, // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+                    },
+                  }} //커스텀 마커 옵션
                 />
-              </>
-            ) : null}
-          </Map>
-          {typeof placeCoords !== "undefined" ? (
-            <>
-              {/* 식당정보 */}
-              <p>{placeCoords.name}</p>
+                {typeof placeCoords !== "undefined" ? (
+                  <>
+                    {/* 맛집 marker */}
+                    <MapMarker
+                      position={{
+                        lat: placeCoords.latitude,
+                        lng: placeCoords.longitude,
+                      }}
+                    />
+                  </>
+                ) : (
+                  <div
+                    style={{
+                      position: "fixed",
+                      top: 0,
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      zIndex: 9999,
+                      backgroundColor: "#fcfcfc",
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Image
+                      src={호이곰}
+                      alt="호이곰"
+                      width={250}
+                      style={{
+                        objectFit: "contain",
+                      }}
+                    />
+                    <h4>맛집 알아오는 중{dot}</h4>
+                  </div>
+                )}
+              </Map>
             </>
           ) : (
-            <div className={styles.place_info_wrap}>
-              <div>
-                <Image
-                  src={호이곰}
-                  alt="호이곰"
-                  width={250}
-                  style={{
-                    objectFit: "contain",
-                  }}
-                />
-                <h4>정보 가져오는 중{dot}</h4>
-              </div>
+            // currentCoords없을 때 로딩 UI
+            <div
+              style={{
+                position: "fixed",
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: 0,
+                zIndex: 9999,
+                backgroundColor: "#fcfcfc",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Image
+                src={호이곰}
+                alt="호이곰"
+                width={250}
+                style={{
+                  objectFit: "contain",
+                }}
+              />
+              <h4>맛집 알아오는 중{dot}</h4>
             </div>
           )}
-        </div>
-      ) : (
-        <div
-          className={styles.wrap}
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Image
-            src={호이곰}
-            alt="호이곰"
-            width={250}
-            style={{
-              objectFit: "contain",
-            }}
-          />
-          <h4>맛집 알아오는 중{dot}</h4>
         </div>
       )}
     </>
