@@ -25,7 +25,7 @@ const Page = () => {
     address: string;
     type: string;
   }>();
-  const [map, setMap] = useState();
+  const [map, setMap] = useState<any>();
 
   useEffect(() => {
     const timer = setInterval(() => {
