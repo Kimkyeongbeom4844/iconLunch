@@ -1,0 +1,31 @@
+.wrap {
+  background-color: transparent;
+  width: 250px;
+  border-radius: 8px;
+  border: 1px solid var(--gray-color);
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+}
+.description {
+  font-weight: normal;
+  color: gray;
+}
+.blogger_wrap {
+  display: flex;
+  margin-top: auto;
+  align-items: center;
+  justify-content: space-between;
+}
+.blogger_wrap > h5 {
+  flex: 1;
+  flex-shrink: 0;
+}
+.bloggername {
+  max-width: 50%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

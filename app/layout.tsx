@@ -1,7 +1,7 @@
 import React from "react";
 import Script from "next/script";
-import "@/app/reset.css";
-import "@/app/global.css";
+import "./reset.css";
+import "./global.css";
 
 const Layout = ({ children }: { children: JSX.Element }) => {
   return (

@@ -5,28 +5,34 @@ export const GET = async (
   { params }: { params: { name: string } }
 ) => {
   try {
-    if (
-      typeof process.env.NAVER_CLIENT_ID !== "undefined" &&
-      typeof process.env.NAVER_CLIENT_SECRET !== "undefined"
-    ) {
-      const response = await fetch(
-        `https://openapi.naver.com/v1/search/image?query=제주${params.name}&display=10&start=1&sort=sim&filter=all`,
-        {
-          headers: {
-            "X-Naver-Client-Id": process.env.NAVER_CLIENT_ID,
-            "X-Naver-Client-Secret": process.env.NAVER_CLIENT_SECRET,
-          },
-        }
-      );
-      const data = await response.json();
-      return NextResponse.json(data, { status: 200 });
-    } else {
-      return NextResponse.json(
-        { error: "요청이 잘못되었습니다." },
-        { status: 400 }
-      );
-    }
+    const apiResponses = await Promise.all([
+      (
+        await fetch(
+          `https://openapi.naver.com/v1/search/image?query=제주+${params.name}&display=100&start=1&sort=sim`,
+          {
+            headers: {
+              "X-Naver-Client-Id": process.env?.NAVER_CLIENT_ID ?? "12341234",
+              "X-Naver-Client-Secret":
+                process.env?.NAVER_CLIENT_SECRET ?? "12342142",
+            },
+          }
+        )
+      ).json(),
+      (
+        await fetch(
+          `https://openapi.naver.com/v1/search/blog?query=제주+${params.name}&display=100&start=1&sort=sim`,
+          {
+            headers: {
+              "X-Naver-Client-Id": process.env?.NAVER_CLIENT_ID ?? "12341234",
+              "X-Naver-Client-Secret":
+                process.env?.NAVER_CLIENT_SECRET ?? "12342142",
+            },
+          }
+        )
+      ).json(),
+    ]);
+    return NextResponse.json(apiResponses);
   } catch (error) {
-    return NextResponse.json({ error }, { status: 500 });
+    return NextResponse.json(error);
   }
 };

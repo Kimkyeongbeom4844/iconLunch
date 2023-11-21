@@ -1,0 +1,23 @@
+.wrap {
+  position: relative;
+}
+.img {
+  object-fit: contain;
+  background-color: #e2e2e2;
+}
+.title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: var(--white-color);
+  transition: 0.7s;
+  opacity: 0;
+  max-height: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.visible {
+  opacity: 1 !important;
+}

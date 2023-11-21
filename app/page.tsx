@@ -6,7 +6,7 @@ import 만두곰 from "@/public/images/jokebear3.gif";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-const Page = (): JSX.Element => {
+const Page = () => {
   const router = useRouter();
   const [isTouch, setIsTouch] = useState(false);
 

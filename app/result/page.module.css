@@ -2,6 +2,8 @@
   background-color: #fcfcfc;
   display: flex;
   flex-direction: column;
+  max-height: 100vh;
+  overflow: hidden;
   /* align-items: center; */
 }
 .header {
@@ -10,7 +12,7 @@
   justify-content: center;
   align-self: stretch;
   position: relative;
-  padding: 5px 0;
+  padding: 3px 0;
 }
 .reload_button {
   background-color: rgb(255, 148, 58);
@@ -25,7 +27,46 @@
 }
 .place_info_wrap {
   display: flex;
+  flex-direction: column;
   flex: 1;
-  justify-content: center;
+  overflow: hidden;
+}
+.relevant_image_wrap {
+  overflow-x: hidden;
+  flex: 1;
+  display: flex;
+  gap: 15px;
+  overflow-x: scroll;
+  flex-shrink: 0;
+  /* border-top: 1px solid #e2e2e2; */
+  /* padding: 10px; */
+}
+.relevant_image_wrap > div {
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  opacity: 1;
+  transition: 0.7s;
+  flex: 1;
+  background-color: var(--gray-color);
+}
+.hidden {
+  opacity: 0 !important;
+  transform: scale(0.7);
+}
+.relevant_blog_wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  overflow: scroll;
+  justify-content: center;
+  margin-top: 5px;
+}
+.place_info_list {
+  display: flex;
+  gap: 10px;
+  font-size: 0.8rem;
+}
+.place_info_list > p {
+  flex-shrink: 0;
 }
