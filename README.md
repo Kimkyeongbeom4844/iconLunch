@@ -1,4 +1,4 @@
-# 아콘점심요정
+# 아콘점심요정 V2
 
 ## 🔎Introduce
 
@@ -13,10 +13,10 @@
 ## ⛏ Development Dependencies
 
 ```powershell
-Next13
-RTK
-RTK Query
+NextJs
 TypeScript
+Naver API
+Kakao API
 ```
 
 ## 🚀 Deploy
