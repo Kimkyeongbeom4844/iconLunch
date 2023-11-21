@@ -27,8 +27,8 @@ const Preview = ({ data }: { data: PreviewData }) => {
         className={styles.img}
         src={data.link}
         alt={data.link}
-        width={200}
-        height={200}
+        width={150}
+        height={150}
         loading={"lazy"}
       />
       <p className={styles.title} ref={titleRef}>

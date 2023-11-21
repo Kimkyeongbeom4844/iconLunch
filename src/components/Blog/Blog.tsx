@@ -43,7 +43,7 @@ const Blog = ({ data }: { data: BlogData }) => {
         <Image
           src={호이곰}
           alt="호이곰"
-          width={250}
+          width={220}
           style={{
             objectFit: "contain",
           }}
