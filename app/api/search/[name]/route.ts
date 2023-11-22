@@ -31,6 +31,7 @@ export const GET = async (
         )
       ).json(),
     ]);
+    console.log(apiResponses);
     return NextResponse.json(apiResponses);
   } catch (error) {
     return NextResponse.json(error);
