@@ -54,13 +54,11 @@ const Layout = ({ children }: { children: JSX.Element }) => {
         />
         <title>아콘점심요정</title>
       </head>
-      <body>
-        {children}
-        <Script
-          src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fb36795153f712aaf6460e83e69422c4&libraries=services,clusterer&autoload=false"
-          strategy="beforeInteractive"
-        />
-      </body>
+      <body>{children}</body>
+      <Script
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fb36795153f712aaf6460e83e69422c4&libraries=services,clusterer&autoload=false"
+        strategy="beforeInteractive"
+      />
     </html>
   );
 };
