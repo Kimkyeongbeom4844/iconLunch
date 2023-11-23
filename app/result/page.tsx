@@ -108,9 +108,8 @@ const Page = () => {
           case 3: // TIMEOUT
             setError({
               code: error.code,
-              message: "위치 정보를 가져올 수 없습니다",
+              message: "위치 정보를 가져오는 시간이 초과되었습니다",
             });
-            window.location.reload();
             break;
         }
       },
