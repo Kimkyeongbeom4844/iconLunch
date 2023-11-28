@@ -1,11 +1,12 @@
 import React from "react";
 import Script from "next/script";
+import { gaegu } from "@/src/styles/fonts";
 import "./reset.css";
 import "./global.css";
 
 const Layout = ({ children }: { children: JSX.Element }) => {
   return (
-    <html lang="ko">
+    <html lang="ko" className={gaegu.className}>
       <head>
         <link
           rel="apple-touch-icon"
